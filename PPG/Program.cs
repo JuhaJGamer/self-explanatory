@@ -75,6 +75,10 @@ namespace PPG
                     selFExplanatory[sE] = Convert.ToByte(self_explanatory.Substring(8 * sE, 8), 2);
                 }
                 self_explanatory = Encoding.ASCII.GetString(selFExplanatory);
+                for(int sE = 0; sE < 16;sE++)
+                {
+                    self_explanatory = self_explanatory.Remove(sE,1);
+                }
                 Console.WriteLine("Full String: {0}", self_explanatory);
                 Console.ReadKey();
             }
@@ -91,9 +95,9 @@ namespace PPG
             {
                 selfexplanatory += (char)Self_Explanatory.Next(0, 255);
             }
-            for(int Es = 0; Es<16;Es+=2)
+            for(int Es = 0; Es<32;Es+=2)
             {
-                selfexplanatory.Insert(Es,(string)((char)Self_Explanatory.Next(0, 255)).ToString());
+                selfexplanatory = selfexplanatory.Insert(Es,(string)((char)Self_Explanatory.Next(0, 255)).ToString());
             }
             if (selfexplanatory.Length > 32)
             {
