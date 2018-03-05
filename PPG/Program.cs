@@ -83,13 +83,17 @@ namespace PPG
 
         private static void SeLfExplanatory()
         {
-            Console.Write("\nSequence [Max 32-char]: ");
+            Console.Write("\nSequence [Max 16-char]: ");
             string selfexplanatory = Console.ReadLine();
             Console.WriteLine("Input: {0}", selfexplanatory);
             Random Self_Explanatory = new Random();
-            while (selfexplanatory.Length < 32)
+            while (selfexplanatory.Length < 16)
             {
                 selfexplanatory += (char)Self_Explanatory.Next(0, 255);
+            }
+            for(int Es = 0; Es<16;Es+=2)
+            {
+                selfexplanatory.Insert(Es,(char)Self_Explanatory.Next(0, 255).ToString());
             }
             if (selfexplanatory.Length > 32)
             {
@@ -100,7 +104,7 @@ namespace PPG
             Console.Write("Bits: ");
             selfExplanatory.Select(x => Convert.ToString(x, 2).PadLeft(8, '0')).ToList().ForEach(Console.Write);
             Bitmap SelfExplanatory = self_Explanatory(selfExplanatory);
-            SelfExplanatory.Save(Environment.CurrentDirectory + "\\" + DateTime.UtcNow.Ticks.ToString() + ".bmp");
+            SelfExplanatory.Save(Environment.CurrentDirectory + "/" + DateTime.UtcNow.Ticks.ToString() + ".bmp");
             Console.ReadKey();
         }
 
