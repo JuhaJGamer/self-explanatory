@@ -93,7 +93,7 @@ namespace PPG
             }
             for(int Es = 0; Es<16;Es+=2)
             {
-                selfexplanatory.Insert(Es,(char)Self_Explanatory.Next(0, 255).ToString());
+                selfexplanatory.Insert(Es,(string)((char)Self_Explanatory.Next(0, 255)).ToString());
             }
             if (selfexplanatory.Length > 32)
             {
